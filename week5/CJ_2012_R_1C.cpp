@@ -2,15 +2,16 @@
 using namespace std;
 
 bool dim(int u, vector<vector<int>>& e, unordered_map<int, int>& vis) {
-    bool carbon = false;
     if(vis.count(u)) return true;
+    vis[u] = 1;
+
+    bool carbon = false;
 
     for(auto i:e[u]) {
         carbon = dim(i, e, vis);
         if(carbon) break;
     }
 
-    vis[u] = carbon;
     return carbon;
 }
 
